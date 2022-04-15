@@ -1,0 +1,18 @@
+name: publishr
+region: lon
+services:
+- dockerfile_path: src/Publishr.Web/Dockerfile
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: da1rren/Publishr
+  health_check:
+    http_path: /health
+  http_port: 80
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: publishr-web
+  routes:
+  - path: /
+  source_dir: src/
+
